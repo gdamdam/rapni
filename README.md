@@ -64,47 +64,55 @@ You can **test** the app:
 ## Quickstart
 
 **show_all**:
-<pre>
+
     curl http://host:5000/docs
-</pre>
 
 **get_doc**:
-<pre>
+
     curl http://host:5000/docs/ID_docs
-</pre>
 
 **insert**:
-<pre>
+
     curl http://host:5000/docs/ID_docs -X POST -H "Content-Type: application/json" -H "Authorization: AUTH_TOKEN" -d "JSON_DOCUMENT"
-</pre>
 
 **udpate**:
-<pre>
+
     curl http://host:5000/docs/ID_docs -X PUT -H "Content-Type: application/json" -H "Authorization: AUTH_TOKEN" -d "JSON_DOCUMENT"
-</pre>
 
 **delete**:
-<pre>
     curl http://host:5000/docs/ID_docs -X DELETE -H "Authorization: AUTH_TOKEN"
-</pre>
 
 
 There is also the entry point *events*, it is a little different:
 
-<pre>
     curl http://host:5000/events -X POST  -H "Content-Type: application/json" -H "Authorization: AUTH_TOKEN" -d "JSON_DOCUMENT"
-</pre>
 
 the JSON_DOCUMENT must contain a key = "target".
 
 To **view all** the events recorded for a target:
 
-<pre>
     curl http://host:5000/events/TARGET_ID
-</pre>
 
 **get all** the documents for a LOCATION_ID:
 
-<pre>
     curl http://host:5000/docs/LOCATION_ID/documents
-</pre>
+
+
+# License
+
+    RAPNI: a basic RESTful API to use PostgreSQL as JSON documents NoSQL store.
+
+    Copyright (C) 2016 Internet Archive
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses>
