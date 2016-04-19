@@ -27,7 +27,7 @@ about how to install postgresql9.5 check the link: https://git.archive.org/snipp
     sudo apt-get install postgresql postgresql-contrib  postgresql-server-dev-9.5
 
 
-## Install
+## Install Rapni
 
 To start, first, **clone** the repository:
 
