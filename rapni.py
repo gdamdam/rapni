@@ -11,7 +11,7 @@ __author__     = "Giovanni Damiola"
 __copyright__  = "Copyright 2016, Internet Archive"
 __email__      = "gio@archive.org"
 __maintainer__ = "Giovanni Damiola"
-__version__    = "v0.1"
+__version__    = "v0.1-beta"
 
 ### Imports
 from flask import Flask, request

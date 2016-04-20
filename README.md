@@ -1,4 +1,4 @@
-# RAPNI
+# RAPNI v0.1.0-beta
 
 Rapni is a basic RESTful API to use PostgreSQL as JSON documents NoSQL store.
 
