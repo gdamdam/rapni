@@ -67,7 +67,7 @@ class DbConnector():
             db_session.add(entry)
             res = db_session.commit()
             self.log.debug("New identifier: {0} succesfully inserted.".format(identifier))
-            return res
+            return True
         except Exception, e:
             self.log.error("database commmit error: {0}").format(e)
             return False
@@ -89,7 +89,7 @@ class DbConnector():
             db_session.add(entry)
             res = db_session.commit()
             self.log.debug("New event")
-            return res
+            return True
         except Exception, e:
             self.log.error("database commmit error: {0}".format(e))
             return False
@@ -117,7 +117,7 @@ class DbConnector():
             db_session.query(table_).filter(table_.identifier==identifier).update({"document":new_document})
             self.log.debug("item {0} updated".format(identifier))
             res = db_session.commit()
-            return res
+            return True
         except Exception, e:
             self.log.error("database update error: {0}".format(e))
             return False
@@ -138,7 +138,7 @@ class DbConnector():
             db_session.query(table_).filter(table_.identifier==identifier).delete()
             res = db_session.commit()
             self.log.debug("Item {0} removed.".format(identifier))
-            return res
+            return True
         except Exception, e:
             self.log.error("database remove error: {0}".format(e))
             return False
