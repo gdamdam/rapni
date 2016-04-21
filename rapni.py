@@ -127,10 +127,14 @@ class IdsResource(Resource):
         else:
             data = request.json
             if data != '':
-                record = db.update(self.COLLECTION, data, identifier)
-                res_msg = "OK - Record {0} succesfully updated.".format(identifier)
-                log.info(res_msg)
-                return res_msg, 200
+                if db.update(self.COLLECTION, data, identifier):
+                    res_msg = "OK - Record {0} succesfully updated.".format(identifier)
+                    log.info(res_msg)
+                    return res_msg, 200
+                else:
+                    res_msg = "ERROR: Something went wrong updating the record"
+                    log.info(res_msg)
+                    return res_msg, 500
             else:
                 res_msg = "ERROR: Empty payload in the POST request.\n Don't forget the header Content-Type: application/json in the request"
                 log.info(res_msg)
@@ -154,10 +158,14 @@ class IdsResource(Resource):
         else:
             data = request.json
             if data != None:
-                record = db.insert(self.COLLECTION, data, identifier)
-                res_msg = "OK - Record {0} succesfully created.".format(identifier)
-                log.info(res_msg)
-                return res_msg, 201
+                if db.insert(self.COLLECTION, data, identifier):
+                    res_msg = "OK - Record {0} succesfully created.".format(identifier)
+                    log.info(res_msg)
+                    return res_msg, 201
+                else:
+                    res_msg = "ERROR: Something went wrong inserting the data"
+                    log.info(res_msg)
+                    return res_msg, 500
             else:
                 res_msg = "ERROR: Empty payload in the POST request. Don't forget the header Content-Type: application/json in the request"
                 log.info(res_msg)
@@ -180,10 +188,14 @@ class IdsResource(Resource):
             log.info(res_msg)
             abort(404, message = res_msg)
         else:
-            res = db.remove(self.COLLECTION, identifier)
-            res_msg = "OK - Record {0} DELETED.".format(identifier)
-            log.info(res_msg)
-            return res_msg, 200
+            if db.remove(self.COLLECTION, identifier):
+                res_msg = "OK - Record {0} DELETED.".format(identifier)
+                log.info(res_msg)
+                return res_msg, 200
+            else:
+                res_msg = "ERROR: something went wrong deleting the entry"
+                log.info(res_msg)
+                return res_msg, 500
 
 
 
@@ -374,10 +386,14 @@ class IdsEventsView(IdsResource):
         if data != None:
             ## TODO a better data schema validation
             ## and better error msg than e
-            record = db.auto_add(self.COLLECTION, data)
-            log.info('Event recorded.')
-            res_msg = 'OK event recorded.'
-            return res_msg, 201
+            if db.auto_add(self.COLLECTION, data):
+                log.info('Event recorded.')
+                res_msg = 'OK event recorded.'
+                return res_msg, 201
+            else:
+                res_msg = 'ERROR - something went wrong inseting the event'
+                log.info(res_msg)
+                return res_msg, 500
         else:
             res_msg = "ERROR: Empty payload in the POST request. Don't forget the header Content-Type: application/json in the request"
             log.info(res_msg)
