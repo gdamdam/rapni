@@ -30,4 +30,5 @@ PSQL_URI                     = "postgresql://{0}:{1}@{2}:{3}/{4}".format(PSQL_US
 ALLOWED_CORS_DOMAINS         = [ "https://localhost", "https://localhost" ]
 
 ## AUTH TOKEN
+REQUIRE_AUTHORIZATION        = False
 AUTH_TOKEN                   = 'fc6add639e80f76e047f642fe6952168'

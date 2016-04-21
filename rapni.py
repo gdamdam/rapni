@@ -86,12 +86,15 @@ class IdsResource(Resource):
     def verify_password(username, password):
         """Define the method used to verify the authentication/authorization
         """
-        token = request.headers.get('Authorization')
-        if token == config.AUTH_TOKEN:
-            return True
+        if config.REQUIRE_AUTHORIZATION :
+            token = request.headers.get('Authorization')
+            if token == config.AUTH_TOKEN:
+                return True
+            else:
+                log.info('Authorization failure')
+                return False
         else:
-            log.info('Authorization failure')
-            return False
+            return True
 
     @validate
     def get(self,identifier):
