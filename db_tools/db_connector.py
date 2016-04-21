@@ -237,6 +237,6 @@ class DbConnector():
         """
         table_ = getattr(db, collection)
         if db_session.query(table_).filter(table_.identifier == identifier).count()>0:
-            return 1
+            return True
         else:
-            return 0
+            return False
