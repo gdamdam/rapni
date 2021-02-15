@@ -263,7 +263,7 @@ class IdsResourceDetails(Resource):
         """Initializes the class. The TARGET_DETAIL_ATTRIB is the attributhe key
         used in the WHERE query statement.
         """
-        selt.TARGET_DETAIL_ATTRIB = target_attrib
+        self.TARGET_DETAIL_ATTRIB = target_attrib
 
     def get(self, identifier, resource):
         """ returns all resource entries metadata with a specific attrib value.
